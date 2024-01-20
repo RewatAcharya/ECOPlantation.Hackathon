@@ -4,8 +4,23 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
+<div class="row row-cols-1 row-cols-md-2 g-4 mt-2" style="margin-left: 10%">
+    <div class="col">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="background-color: #CCEDE9; width: 80% ">
+                <div class="card-body">
+                    <h5 class="card-title">Plant Trees</h5>
+                    <h3 class="card-text">From</h3>
+                    <h1 class="card-text">@item</h1>
+                    <h3 class="card-text">Dharan</h3>
+                    <a href="" class="btn btn-primary">Join Event</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -28,29 +43,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <img src="~/Images/DonationRequest/@item.RequestPhotoURL" height="50px" weight="50px"/>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequestedUser.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                <a asp-route-Id="@item.Id" asp-action="Payments" asp-controller="DonationRequests" data-ajax="true" data-ajax-method="get" data-ajax-update="#page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Provide Donation</a>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Images/DonationRequest/@item.RequestPhotoURL" height="50px" weight="50px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestedUser.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    <a asp-route-Id="@item.Id" asp-action="Payments" asp-controller="DonationRequests" data-ajax="true" data-ajax-method="get" data-ajax-update="#page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Provide Donation</a>
 
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 

@@ -2,24 +2,94 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    int count = ViewBag.Count;
+    int count;
+    if (ViewBag.Count == null)
+    {
+        count = 0;
+    }
+    else
+    {
+        count = ViewBag.Count;
+    }
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div style="background-color: #191E29">
+    <div class="row">
+        <div class="col-4" style="margin-left: 10%; margin-top: 5%;">
+            <h3 class='text-white'>
+                Plant<br>
+                Connect,
+            </h3>
+            <h2 style="color: #21C094">Inspire</h2>
+            <h5 class='text-white'>
+                Where every Seed Tells a Story
+            </h5>
+            <h3 class='mt-3 ms-5' style="color: #21C094">@count+</h3>
+            <span class='text-white ms-5'>Planted Trees</span>
+        </div>
+        <div class="col-6 ms-5" style="padding-left: 15%; margin-top: 2%;">
+            <img src="~/images/statics/home2.png" height='410px' width='370px' alt="">
+            <img src="~/images/statics/home1.png" height='300px' width='200px' alt="" style="position: absolute; left: 990px; top: 140px; z-index: -">
+        </div>
+        <div style="background-color: #191E29; padding-bottom: 20px; width: 1519.2px">
+            <h2 style="color: #21C094; margin-left: 5%;">Features</h2>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-around p-5" style="background-color: #191E29">
+            <div class="col">
+                <div class="card h-100 border-0">
+                    <img src="~/images/statics/features1.png" class="card-img-top" alt="..." height='245px' width='50px'>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border-0">
+                    <img src="~/images/statics/features2.png" class="card-img-top" alt="..." height='245px' width='50px'>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border-0">
+                    <img src="~/images/statics/features3.png" class="card-img-top" alt="..." height='245px' width='50px'>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<p>@count no of trees planted</p>
 
-<form asp-action="SendTree" asp-controller="PlantCounts">
-    <div class="form-group">
-        <label asp-for="NoOfPlants" class="control-label"></label>
-        <input asp-for="NoOfPlants" class="form-control" />
-        <span asp-validation-for="NoOfPlants" class="text-danger"></span>
-    </div>
 
-    <div class="form-group">
-        <input type="submit" value="Send" class="btn btn-primary" />
+<div style="background-color: #191E29">
+    <div class="row">
+        <div class="col-4" style="margin-left: 10%; margin-top: 5%;">
+            <h4 style="color: #21C094">Keep Track</h4>
+            <span class='text-white'>
+                of Fertilizers
+            </span>
+            <h6 class='text-white'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio iusto fugiat tempora pariatur deleniti, sit, ea vero veniam quo tempore ex? Dolorum quam sequi rem ex voluptatem? Ratione, sequi mollitia!</h6>
+        </div>
+        <div class="col-6 ms-5" style="padding-left: 15%; margin-top: 2%;">
+            <img src="~/images/statics/fertilizers.png" height='284px' width='350px' alt="">
+        </div>
+        <div style="background-color: #52538C;">
+            <div class="text-center mt-5">
+                <h3 class="text-center" style="color: #21C094">Building Green</h3>
+                <h3 class="text-white text-center">Communities Together</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-4" style="margin-left: 10%; margin-top: 2%;">
+                    <h1 class='mt-3 ms-5' style="color: #21C094">@count+</h1>
+                    <h2 class='text-white ms-5'>Planted Trees</h2>
+                </div>
+                <div class="col-6 ms-5" style="padding-left: 15%; margin-top: 2%;">
+                    <form asp-action="SendTree" asp-controller="PlantCounts">
+                        <label class="text-white text-bold mb-2" for="">Number of trees planted today</label><br>
+                        <input asp-for="NoOfPlants" class="rounded border border-success" style="width: 260px; background-color: grey">
+                        <input type="submit" value="+" class="btn btn-success round" style="color: white; border-radius: 50%" />
+                    </form>
+                </div>
+            </div>
+
+        </div>
     </div>
-</form>
+</div>

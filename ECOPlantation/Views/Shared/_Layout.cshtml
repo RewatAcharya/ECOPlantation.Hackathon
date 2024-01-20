@@ -13,34 +13,37 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ECOPlantation</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Invites" asp-action="Index">Community</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="DonationRequests" asp-action="Index">Donation</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="News" asp-action="Index">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="ApplicationUsers" asp-action="Login">Login</a>
-                        </li>
-                    </ul>
+
+        <div style="background-image: url('images\statics\img\image.png'); background-size: cover; background-position: center; background-repeat: no-repeat; font-family: 'Outfit', sans-serif;">
+
+            <nav class="navbar navbar-expand-lg">
+                <img src="~/images/Statics/img/logo.png" style="margin-left: 2%;" height='70px' width='80px' />
+                <ul class="navbar-nav" style="margin-left: 30%;">
+                    <li class="navbar-item">
+                        <a class="nav-link" style="color: white" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" style="color: white" asp-controller="DonationRequests" asp-action="Index">Donate</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" style="color: white" asp-controller="Invites" asp-action="Index">Community</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" style="color: white" asp-controller="News" asp-action="Index">News</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" style="color: white" href="">Expert</a>
+                    </li>
+                </ul>
+                <div class="list-unstyled d-flex" style="margin-left: 20%;">
+                    <li class="nav-item">
+                        <a class="btn btn-success nav-link" style="color: white" asp-controller="ApplicationUsers" asp-action="Login">Login</a>
+                    </li>
                 </div>
-            </div>
-        </nav>
+
+            </nav>
+        </div>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -48,11 +51,73 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - ECOPlantation - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+ 
+    
+    <div style="background-color: #191E29">
+        <footer class="text-center text-lg-start text-white">
+            <!-- Grid container -->
+            <div class="container p-4">
+                <!--Grid row-->
+                <div class="row my-4">
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+
+                        <div class="rounded-circle bg-white shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 150px; height: 150px;">
+                            <img src="~/images/Statics/img/logo.png" height="70" alt=""
+                                 loading="lazy" />
+                        </div>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase mb-4">ECO PLANTATION</h5>
+
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Home</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Donate</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>News</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Expert</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase mb-4">Contact</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <p><i class="fas fa-map-marker-alt pe-2"></i>Itahari, Nepal</p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-phone pe-2"></i>+977-9811224455 </p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-envelope pe-2 mb-0"></i>ecoplantation@example.com</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </div>
+            <!-- Grid container -->
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                © 2024 Copyright:
+                <a class="text-white" href="https://google.com/">ecoplantation.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
         </div>
-    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

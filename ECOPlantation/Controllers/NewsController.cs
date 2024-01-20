@@ -50,7 +50,7 @@ namespace ECOPlantation.Controllers
         // GET: News/Create
         public IActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: News/Create
