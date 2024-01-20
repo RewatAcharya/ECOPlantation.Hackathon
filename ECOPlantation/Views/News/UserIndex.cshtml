@@ -1,0 +1,43 @@
+﻿@using System.Security.Claims
+@model IEnumerable<ECOPlantation.Models.News>
+
+@{
+    Layout = "_Profile";
+    ViewData["Title"] = "Index";
+}
+<style>
+    body {
+        background-color: #191E29;
+        color: white;
+        background-image: url('@Url.Content("~/images/statics/background.png")');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+
+
+<div class="container mb-4">
+    <div class="justify-content-center row ml-3" style="margin-left: 10px;">
+
+        @foreach (var item in Model.Where(x => x.PostedBy.ToString() == User.FindFirstValue(ClaimTypes.Name)))
+        {
+
+            <div class="col-md-5 g-4">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="~/Images/News/@item.NewsPhotoURL" alt="" style="display: flex; justify-content: center; align-items: center; height: 37vh;">
+                        <a asp-action="Details" asp-route-id="@item.Id" style="text-decoration: none;">
+                            <h3 class="card-text" style="color: black; text-decoration: none">@item.NewsTitle</h3>
+                        </a>
+                        <p style="color: black; font-size: 12px; margin-top: -10px;">@item.CreatedAt</p>
+                        <a class="btn btn-success justify-content-center" style="text-decoration: none;" asp-route-Id="@item.Id" asp-action="Delete" asp-controller="News">Delete News</a>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>

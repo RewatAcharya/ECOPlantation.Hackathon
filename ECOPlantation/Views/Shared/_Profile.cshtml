@@ -1,0 +1,73 @@
+﻿@using System.Security.Claims
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 56px;
+            background-color: #191E29;
+            color: white;
+            background-image: url('img/background.png'); /* Replace 'your-image-url.jpg' with the path to your image */
+            background-size: cover; /* Ensure the background image covers the entire body */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the background image from repeating */
+        }
+
+        .sidebar {
+            position: fixed;
+            height: 100%;
+            width: 250px;
+            background-color: #2f3950; /* Choose a background color for your sidebar */
+            padding-top: 20px;
+        }
+
+        .content {
+            margin-left: 260px; /* Adjust this value based on your sidebar width */
+            padding: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+        <img src="~/images/Statics/img/logo.png" style="margin-left: 2%;" height='40px' width='60px' />
+
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Add your sidebar content here -->
+        <ul class="nav flex-column" style=" margin-top: 200px; margin-left: 40px;">
+            <li class="nav-item">
+                <a style="text-decoration: none; font-size: 25px; font-weight: 600; color: rgb(255, 255, 255);" class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a style="text-decoration: none; font-size: 25px; font-weight: 600; color: rgb(255, 255, 255);" class="nav-link" asp-action="Index" asp-controller="Fertilizers" asp-route-id="@User.FindFirstValue(ClaimTypes.Name)">Fertilizing</a>
+            </li>
+            <li class="nav-item">
+                <a style="text-decoration: none; font-size: 25px; font-weight: 600; color: rgb(255, 255, 255);" class="nav-link" asp-action="UserIndex" asp-controller="DonationRequests" asp-route-id="@User.FindFirstValue(ClaimTypes.Name)">Donation</a>
+            </li>
+            <li class="nav-item">
+                <a style="text-decoration: none; font-size: 25px; font-weight: 600; color: rgb(255, 255, 255);" class="nav-link" asp-action="UserIndex" asp-controller="News" asp-route-id="@User.FindFirstValue(ClaimTypes.Name)">News</a>
+            </li>
+            <!-- Add more links as needed -->
+        </ul>
+    </div>
+
+    <!-- Page Content -->
+    <div class="content" style="color: white;">
+        @RenderBody()
+        <!-- Add your main content here -->
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

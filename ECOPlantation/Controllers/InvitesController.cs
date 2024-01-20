@@ -26,6 +26,7 @@ namespace ECOPlantation.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Invites.Include(i => i.OrganiserFK);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -51,7 +52,7 @@ namespace ECOPlantation.Controllers
         // GET: Invites/Create
         public IActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Invites/Create
@@ -67,7 +68,7 @@ namespace ECOPlantation.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(invite);
+            return PartialView(invite);
         }
 
         // GET: Invites/Edit/5

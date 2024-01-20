@@ -1,29 +1,97 @@
-﻿
-<h4>ApplicationUser</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input name="email" class="form-control" />
-            </div>
-            <div class="form-grvalidationoup">
-                <input name="password" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+﻿<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+            <style>
+                body {
+                    background-color: #191E29;
+                    color: white;
+                    margin: 0;
+                    padding: 0;
+                }
 
-<div>
-    <a asp-action="Register">Go to Register</a>
-</div>
+                .box1 {
+                    background-color: #191E29;
+                    color: white;
+                    background-image: url('@Url.Content("~/images/statics/handd.png")');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    height: 100vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+                .box2 {
+                    height: 100vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .underline-input {
+                    background-color: transparent; /* Make background transparent */
+                    border: none;
+                    border-bottom: 1px solid #01C38D;
+                    border-radius: 0;
+                    outline: none;
+                    box-shadow: none;
+                    color: white; /* Text color */
+                    margin-bottom: 6%;
+                }
+            </style>
+            <title>Two Boxes</title>
+        </head>
+        <body>
+
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 box1">
+                        <!-- Content for the first box -->
+                        <div class="">
+                            <h1 style="font-weight: 700; font-size: 60px;">WELCOME</h1>
+                            <p>We are a community, together to grow plant.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 box2" style="margin-top: -10%; ">
+                        <!-- Content for the second box -->
+                        <div class="container">
+                            <h1 style="margin-left: 15%; font-weight: 700; font-size: 80px;">Get Started</h1>
+                            <p style="margin-left: 28%; margin-top: -1%;">
+                                Create new account!
+                                <a asp-action="Register" style="color: #01C38D; font-weight: 650;">Register</a>
+                            </p>
+
+                            <div class="details" style="margin-top: 10%;">
+
+                                <form asp-action="Login">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <input name="email" class="form-control underline-input" id="underlineTextField" placeholder="Email">
+                                    </div>
+                                    <div class="form-grvalidationoup">
+                                        <input type="password" name="password" class="form-control underline-input" id="underlineTextField" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success float-end" style="margin-left: 40%;">Log In</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        </body>
+    </html>
+
+
+

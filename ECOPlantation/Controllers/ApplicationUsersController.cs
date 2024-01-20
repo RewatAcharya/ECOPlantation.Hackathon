@@ -11,6 +11,7 @@ using System.Data;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECOPlantation.Controllers
 {
@@ -27,7 +28,7 @@ namespace ECOPlantation.Controllers
         // GET: ApplicationUsers/Register
         public IActionResult Register()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: ApplicationUsers/Create
@@ -42,13 +43,13 @@ namespace ECOPlantation.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Login", "ApplicationUsers");
             }
-            return View(applicationUser);
+            return PartialView(applicationUser);
         }
 
         // GET: ApplicationUsers/Login
         public IActionResult Login()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -57,7 +58,7 @@ namespace ECOPlantation.Controllers
             var user = _context.ApplicationUsers.Where(x => x.Email == email && x.Password == password).FirstOrDefault();
             if (user == null)
             {
-                return View();
+                return PartialView();
             }
 
             var claims = new List<Claim>
@@ -70,6 +71,14 @@ namespace ECOPlantation.Controllers
 
             return RedirectToAction("Index", "Home");
 
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

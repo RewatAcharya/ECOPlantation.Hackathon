@@ -1,0 +1,42 @@
+﻿@using System.Security.Claims
+@model IEnumerable<ECOPlantation.Models.DonationRequest>
+
+@{
+    Layout = "_Profile";
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        background-color: #191E29;
+        color: white;
+        background-image: url('@Url.Content("~/images/statics/background.png")');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    @foreach (var item in Model.Where(x => x.RequestedBy.ToString() == User.FindFirstValue(ClaimTypes.Name)))
+            {
+              <div class="col">
+                <div class="card" style="color: black; padding-left:"1">
+                    <img style="height:40px width:fit-content" src="~/Images/DonationRequest/@item.RequestPhotoURL">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title"></h5>
+                        <p class="card-text" style="font-size: 16px;">@item.Content</p>
+
+                    </div>
+                    <div class="conntainer mb-2" style="margin-left: 35%;">
+
+                        <a class="btn btn-success justify-content-center" style="text-decoration: none;" asp-route-Id="@item.Id" asp-action="Delete" asp-controller="DonationRequests">Delete Donation</a>
+
+                    </div>
+                </div>
+             </div>
+            }
+            </div>
+       

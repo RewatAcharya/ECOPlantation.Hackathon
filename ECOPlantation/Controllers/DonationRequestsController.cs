@@ -22,6 +22,12 @@ namespace ECOPlantation.Controllers
             _env = env;
         }
 
+        public async Task<IActionResult> UserIndex(int id)
+        {
+            var applicationDbContext = _context.DonationRequests.Include(d => d.RequestedUser);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
         // GET: DonationRequests
         public async Task<IActionResult> Index()
         {
@@ -51,7 +57,7 @@ namespace ECOPlantation.Controllers
         // GET: DonationRequests/Create
         public IActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: DonationRequests/Create

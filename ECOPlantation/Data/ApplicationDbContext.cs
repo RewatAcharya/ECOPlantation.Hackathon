@@ -19,5 +19,6 @@ namespace ECOPlantation.Data
         public DbSet<DonationRequest> DonationRequests { get; set; }
         public DbSet<DonationPayment> DonationPayments { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<Fertilizers> Fertilizers { get; set; }
     }
 }

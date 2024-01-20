@@ -1,0 +1,50 @@
+﻿@using System.Security.Claims
+@model ECOPlantation.Models.Fertilizers
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    body {
+        color: White;
+    }
+</style>
+
+<h1>Create</h1>
+
+<h4>Fertilizers</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="PlantName" class="control-label"></label>
+                <input asp-for="PlantName" class="form-control" />
+                <span asp-validation-for="PlantName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FertilizerName" class="control-label mt-2"></label>
+                <input asp-for="FertilizerName" class="form-control" />
+                <span asp-validation-for="FertilizerName" class="text-danger"></span>
+            </div>
+
+            <input asp-for="UserID" class="form-control" value="@User.FindFirstValue(ClaimTypes.Name)" hidden />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success mt-3" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-dark mt-2">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

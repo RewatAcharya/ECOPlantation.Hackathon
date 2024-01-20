@@ -120,6 +120,41 @@ namespace ECOPlantation.Migrations
                     b.ToTable("DonationRequests");
                 });
 
+            modelBuilder.Entity("ECOPlantation.Models.Fertilizers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FertilizerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("MsgDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PlantName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("userID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("userID");
+
+                    b.ToTable("Fertilizers");
+                });
+
             modelBuilder.Entity("ECOPlantation.Models.Invite", b =>
                 {
                     b.Property<int>("Id")
@@ -266,6 +301,17 @@ namespace ECOPlantation.Migrations
                         .IsRequired();
 
                     b.Navigation("RequestedUser");
+                });
+
+            modelBuilder.Entity("ECOPlantation.Models.Fertilizers", b =>
+                {
+                    b.HasOne("ECOPlantation.Models.ApplicationUser", "UserFertilizer")
+                        .WithMany()
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserFertilizer");
                 });
 
             modelBuilder.Entity("ECOPlantation.Models.Invite", b =>

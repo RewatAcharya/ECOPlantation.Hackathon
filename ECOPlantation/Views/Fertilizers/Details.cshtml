@@ -1,0 +1,54 @@
+﻿@model ECOPlantation.Models.Fertilizers
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Fertilizers</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MsgDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MsgDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PlantName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PlantName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FertilizerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FertilizerName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserFertilizer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserFertilizer.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
