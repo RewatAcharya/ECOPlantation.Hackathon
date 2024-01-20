@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+
 </head>
 <body>
     <header>
@@ -32,12 +37,19 @@
                         <a class="nav-link" style="color: white" asp-controller="News" asp-action="Index">News</a>
                     </li>
                     <li class="navbar-item">
-                        <a class="nav-link" style="color: white" href="">Expert</a>
+                        <a class="nav-link" style="color: white" asp-action="Index" asp-controller="Fertilizers">Profile</a>
                     </li>
                 </ul>
                 <div class="list-unstyled d-flex" style="margin-left: 20%;">
                     <li class="nav-item">
-                        <a class="btn btn-success nav-link" style="color: white" asp-controller="ApplicationUsers" asp-action="Login">Login</a>
+                        @if (User.FindFirstValue(ClaimTypes.Name) == null){
+                            <a class="btn btn-success nav-link" style="color: white" asp-controller="ApplicationUsers" asp-action="Login">Login</a>
+
+                        }
+                        else{
+                            <a class="btn btn-success nav-link" style="color: white" asp-controller="ApplicationUsers" asp-action="Logout">Logout</a>
+
+                        }
                     </li>
                 </div>
 
@@ -69,23 +81,8 @@
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase mb-4">ECO PLANTATION</h5>
-
-                        <ul class="list-unstyled">
-                            <li class="mb-2">
-                                <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Home</a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Donate</a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>News</a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="#!" class="text-white"><i class="fas fa-paw pe-3"></i>Expert</a>
-                            </li>
-                        </ul>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 mt-5">
+                        <h5 class="text-uppercase mb-4 mt-4">ECO PLANTATION</h5>
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->

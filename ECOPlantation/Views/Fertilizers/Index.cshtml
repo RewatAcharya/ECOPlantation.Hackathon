@@ -1,0 +1,70 @@
+﻿@using System.Security.Claims
+@model IEnumerable<ECOPlantation.Models.Fertilizers>
+
+@{
+    Layout = "_Profile";
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        color: white;
+    }
+</style>
+        <p>
+            <a asp-action="Create" class="btn btn-success">Create New</a>
+        </p>
+        <table class="table bg-white">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MsgDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PlantName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FertilizerName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserFertilizer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UpdatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedAt)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody >
+                @foreach (var item in Model.Where(x => x.UserID.ToString() == User.FindFirstValue(ClaimTypes.Name)))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MsgDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlantName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FertilizerName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserFertilizer.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UpdatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>

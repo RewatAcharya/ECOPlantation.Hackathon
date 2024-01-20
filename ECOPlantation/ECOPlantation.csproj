@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Fertilizers\" />
     <Folder Include="wwwroot\Images\DonationRequest\" />
     <Folder Include="wwwroot\Images\News\" />
   </ItemGroup>

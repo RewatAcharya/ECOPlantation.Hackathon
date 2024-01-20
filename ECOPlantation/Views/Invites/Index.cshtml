@@ -6,40 +6,50 @@
 }
 
 <style>
-    body{
-        color: black;
+    body {
+        background-color: #191E29;
+        color: white;
+        background-image: url('@Url.Content("~/images/statics/background.png")');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
+    .height {
+        height: 95%;
+    }
+    
 </style>
 
 <div class="container">
     <div class="justify-content-center row">
         <div class="col-md-6">
-            <h2 style="margin-right: 10%; color: white">New Invites</h2>
+            <h2 style="margin-right: 10%; font-weight:600; color: white">New Events</h2>
         </div>
         <div class="col-md-4 text-end">
-            <a asp-action="Create" asp-controller="Invites" class="btn btn-success float-end" data-ajax="true" data-ajax-method="get" data-ajax-update="#page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Post New Event</a>
+            <a asp-action="Create" asp-controller="Invites" class="btn btn-success ms-5 float-end" data-ajax="true" data-ajax-method="get" data-ajax-update="#page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Post New Event</a>
 
         </div>
     </div>
 </div>
 
 
-<div class="row row-cols-1 row-cols-md-2 g-4 mt-2" style="margin-left: 10%">
-    <div class="col">
+<div class="container mt-2">
+    <div class="row">
         @foreach (var item in Model)
         {
-            <div class="card mt-2" style="background-color: #CCEDE9; width: 80% ">
-                <div class="card-body">
-                    <h5 class="card-title">@item.EventName</h5>
-                    <h3 class="card-text">From</h3>
-                    <h1 class="card-text">@item.EventDate</h1>
-                    <h3 class="card-text">@item.Location</h3>
-                    <form asp-action="Create" asp-controller="Visitors">
-                        <input name="EventId" value="@item.Id" hidden />
-                        <input name="VisitorId" value="@User.FindFirstValue(ClaimTypes.Name)" hidden />
-                        <button type="submit" class="btn btn-primary">Join Now</button> 
-
-                    </form>
+            <div class="col-md-6">
+                <div class="card mt-2 height" style="background-color: white;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: black; font-weight: 800; font-size: 23px">@item.EventName</h5>
+                        <h3 class="card-text" style="color: black; font-size: 18px">From</h3>
+                        <h1 class="card-text" style="color: black; font-size: 20px">@item.EventDate</h1>
+                        <h3 class="card-text" style="color: black; font-size: 20px; margin-bottom: 10px">@item.Location</h3>
+                        <form asp-action="Create" asp-controller="Visitors">
+                            <input name="EventId" value="@item.Id" hidden />
+                            <input name="VisitorId" value="@User.FindFirstValue(ClaimTypes.Name)" hidden />
+                            <button type="submit" class="btn btn-primary">Join Now</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         }

@@ -1,6 +1,11 @@
 ﻿@using System.Security.Claims
 @model ECOPlantation.Models.DonationPayment
 
+<style>
+    body {
+        color: black;
+    }
+</style>
 
 <form asp-action="Payments" asp-controller="DonationRequests">
     <div class="modal-content">
@@ -11,22 +16,17 @@
         <div class="modal-body">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="DonatedBy" class="control-label"></label>
-                <input asp-for="DonatedBy" value="@User.FindFirstValue(ClaimTypes.Name)" class="form-control" />
-                <span asp-validation-for="DonatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RequestedDonation" class="control-label"></label>
-                <input asp-for="RequestedDonation" value="@ViewBag.DonationId" class="form-control" />
-                <span asp-validation-for="RequestedDonation" class="text-danger"></span>
-            </div>
+
+            <input asp-for="DonatedBy" value="@User.FindFirstValue(ClaimTypes.Name)" class="form-control" hidden />
+
+            <input asp-for="RequestedDonation" value="@ViewBag.DonationId" class="form-control" hidden/>
+
             <div class="form-group">
                 <label asp-for="TotalDonation" class="control-label"></label>
                 <input asp-for="TotalDonation" class="form-control" />
                 <span asp-validation-for="TotalDonation" class="text-danger"></span>
             </div>
-           
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

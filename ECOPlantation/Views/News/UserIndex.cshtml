@@ -1,6 +1,8 @@
-﻿@model IEnumerable<ECOPlantation.Models.News>
+﻿@using System.Security.Claims
+@model IEnumerable<ECOPlantation.Models.News>
 
 @{
+    Layout = "_Profile";
     ViewData["Title"] = "Index";
 }
 <style>
@@ -14,22 +16,11 @@
     }
 </style>
 
-<div class="container">
-    <div class="justify-content-center row">
-        <div class="col-md-6">
-            <h2 style="margin-right: 10%;">News</h2>
-        </div>
-        <div class="col-md-4 text-end">
-            <a asp-action="Create" asp-controller="News" class="btn btn-success float-end" data-ajax="true" data-ajax-method="get" data-ajax-update="#page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Post News</a>
-
-        </div>
-    </div>
-</div>
 
 <div class="container mb-4">
     <div class="justify-content-center row ml-3" style="margin-left: 10px;">
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Where(x => x.PostedBy.ToString() == User.FindFirstValue(ClaimTypes.Name)))
         {
 
             <div class="col-md-5 g-4">
@@ -40,7 +31,7 @@
                             <h3 class="card-text" style="color: black; text-decoration: none">@item.NewsTitle</h3>
                         </a>
                         <p style="color: black; font-size: 12px; margin-top: -10px;">@item.CreatedAt</p>
-                        <!-- <p style="color: black; font-size: 12px; margin-top: -10px;">01 january 2024</p> -->
+                        <a class="btn btn-success justify-content-center" style="text-decoration: none;" asp-route-Id="@item.Id" asp-action="Delete" asp-controller="News">Delete News</a>
                     </div>
 
                 </div>
@@ -48,10 +39,5 @@
 
         }
 
-    </div>
-</div>
-
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" id="page">
     </div>
 </div>

@@ -1,6 +1,8 @@
-﻿@model IEnumerable<ECOPlantation.Models.DonationRequest>
+﻿@using System.Security.Claims
+@model IEnumerable<ECOPlantation.Models.DonationRequest>
 
 @{
+    Layout = "_Profile";
     ViewData["Title"] = "Index";
 }
 
@@ -14,11 +16,9 @@
         background-repeat: no-repeat;
     }
 </style>
-<p>
-    <a class="btn btn-success justify-content-center" asp-action="Create" asp-controller="DonationRequests" data-ajax="true" data-ajax-method="get" data-ajax-update="#page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create Donation</a>
-</p>
+
 <div class="row row-cols-1 row-cols-md-2 g-4">
-            @foreach (var item in Model)
+    @foreach (var item in Model.Where(x => x.RequestedBy.ToString() == User.FindFirstValue(ClaimTypes.Name)))
             {
               <div class="col">
                 <div class="card" style="color: black; padding-left:"1">
@@ -32,7 +32,7 @@
                     </div>
                     <div class="conntainer mb-2" style="margin-left: 35%;">
 
-                        <a class="btn btn-success justify-content-center" style="text-decoration: none;" asp-route-Id="@item.Id" asp-action="Payments" asp-controller="DonationRequests" data-ajax="true" data-ajax-method="get" data-ajax-update="#page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Provide Donation</a>
+                        <a class="btn btn-success justify-content-center" style="text-decoration: none;" asp-route-Id="@item.Id" asp-action="Delete" asp-controller="DonationRequests">Delete Donation</a>
 
                     </div>
                 </div>
@@ -40,8 +40,3 @@
             }
             </div>
        
-
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" id="page">
-    </div>
-</div>
