@@ -1,0 +1,25 @@
+﻿@model ECOPlantation.Models.PlantCount
+
+@{
+    ViewData["Title"] = "Home Page";
+    int count = ViewBag.Count;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<p>@count no of trees planted</p>
+
+<form asp-action="SendTree" asp-controller="PlantCounts">
+    <div class="form-group">
+        <label asp-for="NoOfPlants" class="control-label"></label>
+        <input asp-for="NoOfPlants" class="form-control" />
+        <span asp-validation-for="NoOfPlants" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Send" class="btn btn-primary" />
+    </div>
+</form>

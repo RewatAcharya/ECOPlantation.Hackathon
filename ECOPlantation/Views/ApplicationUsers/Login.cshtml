@@ -1,0 +1,29 @@
+﻿
+<h4>ApplicationUser</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input name="email" class="form-control" />
+            </div>
+            <div class="form-grvalidationoup">
+                <input name="password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Register">Go to Register</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
